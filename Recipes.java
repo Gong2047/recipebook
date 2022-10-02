@@ -1,51 +1,90 @@
+import java.util.*;
+
 public class Recipes {
     private String name;
     private String description;
-    private String ingredients;
-    private String steps;
+    private ArrayList<String> ingredients;
+    private ArrayList<String> steps;
 
-    public Recipes(){}
-
-    public Recipes(String recipe_name, String desc, String ingr, String step) {
-        name = recipe_name;
-        description = desc;
-        ingredients = ingr;
-        steps = step;
+    public Recipes(){
+    	this.ingredients = new ArrayList<String>();
+        this.steps = new ArrayList<String>();
     }
 
-    public String getName() {
-        return name;
+    public Recipes(String recipe_name, String desc) {
+        this.name = recipe_name;
+        this.description = desc;
+        this.ingredients = new ArrayList<String>();
+        this.steps = new ArrayList<String>();
     }
+    
+    //Getter and Setters for name and description
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
 
-    public void setName(String name) {
-        this.name = name;
+    //Adding new ingredients and steps
+    public void addIngred(String newIngred) {
+    	this.ingredients.add(newIngred);
     }
-
-    public String getDescription() {
-        return description;
+    public void addStep(String newStep) {
+    	this.steps.add(newStep);
     }
-
-    public void setDescription(String description) {
-        this.description = description;
+    
+    //Getting the Array List of Ingredients
+    public ArrayList<String> getIngredientsArray() {
+        return this.ingredients;
     }
-
+    
+    //Getting a String containing all ingredients 
     public String getIngredients() {
-        return ingredients;
+        String IngStr = "";
+    	for (int i = 0; i<this.ingredients.size();i++) {
+    		IngStr = IngStr + this.ingredients.get(i) + (i==this.ingredients.size()-1?"":",");
+        }
+    	return IngStr;
     }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
+    
+    //Change an ingredient at the given index, assume the index is correct
+    public void changeIngredient(String newIngred, int n) {
+        this.ingredients.set(n, newIngred);
     }
-
+    //Delete an ingredient at the given index, assume the index is correct
+    public void deleteIngredient(int n) {
+        this.ingredients.remove(n);
+    }
+    
+    //Getting the Array List of Steps
+    public ArrayList<String> getStepsArray() {
+        return this.steps;
+    }
+    
+    //Getting a String containing all ingredients 
     public String getSteps() {
-        return steps;
+    	String stepStr = "";
+    	for (int i = 0; i<this.ingredients.size();i++) {
+    		stepStr = stepStr + (i==0?"":"  ") + String.format("%d. %s", i+1, this.steps.get(i));
+        }
+    	return stepStr;
+	}
+    
+    //Change a step at the given index, assume the index is correct
+    public void changeStep(String newIngred, int n) {
+        this.ingredients.set(n, newIngred);
     }
-
-    public void setSteps(String steps) {
-        this.steps = ingredients;
+    //Delete a step at the given index, assume the index is correct
+    public void deleteStep(int n) {
+        this.ingredients.remove(n);
     }
-
-    public void displayRecipe(Recipes recipe) {
-        System.out.println("Recipe name: " + recipe.getName());
+    
+    //Check if the recipe contains certain ingredients, given a word of ingredients
+    public Boolean containsIng(String ingredient) {
+    	for (String s: this.ingredients) {
+    		if (s.contains(ingredient)) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 }
