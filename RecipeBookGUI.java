@@ -76,13 +76,13 @@ public class RecipeBookGUI extends JFrame {
         //pMain.add(R3);
 
 		// create & format buttons
-        bCreation = new roundButton("Create Recipe", Color.decode("#E0D8B0"));
+        bCreation = new roundButton("Create Recipe", Color.decode("#FFEE8E"));
         bCreation.setBounds(60,230,215, 70);
 
-        bRetrieval = new roundButton("Retrieve Recipe", Color.decode("#E0D8B0")); 
+        bRetrieval = new roundButton("Retrieve Recipe", Color.decode("#FFEE8E")); 
 		bRetrieval.setBounds(305,230,215, 70);
 
-		bModify = new roundButton("Modify Recipe", Color.decode("#E0D8B0"));
+		bModify = new roundButton("Modify Recipe", Color.decode("#FFEE8E"));
 		bModify.setBounds(60,330,215, 70);
 
         bExit = new roundButton("Exit", Color.decode("#DF7861"));
